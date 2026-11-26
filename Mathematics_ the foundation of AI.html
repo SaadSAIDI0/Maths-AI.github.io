@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mathematics: the foundation of artificial intelligence</title>
+<style>
+:root{--bg:#0a1628;--cd:#12264a;--bd:#25467f;--ac:#3b82f6;--a2:#6aa9ff;--tx:#eaf1ff;--mu:#9db3d6;--wr:#ff7a59;--ok:#34d399;--on:#06122a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f7ff;--cd:#fff;--bd:#c5d5f2;--ac:#2563eb;--a2:#2f6fe0;--tx:#0a1a3a;--mu:#51648a;--wr:#d9481f;--ok:#059669;--on:#fff}}
+:root[data-theme="light"]{--bg:#f3f7ff;--cd:#fff;--bd:#c5d5f2;--ac:#2563eb;--a2:#2f6fe0;--tx:#0a1a3a;--mu:#51648a;--wr:#d9481f;--ok:#059669;--on:#fff}
+:root[data-theme="dark"]{--bg:#0a1628;--cd:#12264a;--bd:#25467f;--ac:#3b82f6;--a2:#6aa9ff;--tx:#eaf1ff;--mu:#9db3d6;--wr:#ff7a59;--ok:#34d399;--on:#06122a}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font:17px/1.45 "Space Grotesk","Segoe UI",system-ui,sans-serif;overflow:hidden}
+h1,h2,h3,p{margin:0}
+h1{font-size:clamp(30px,5.6vw,66px);line-height:1.08;max-width:15em}
+h2{font-size:clamp(24px,3.6vw,44px);line-height:1.12}
+h3{font-size:18px;color:var(--a2)}
+small{color:var(--ac);font-size:15px;letter-spacing:.02em}
+.mu{color:var(--mu)}.sub{font-size:clamp(18px,2.4vw,28px)}
+.f{font-family:"JetBrains Mono","Consolas",monospace;color:var(--a2)}
+.big{font-size:clamp(22px,3vw,36px)}
+section{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;gap:16px;padding:28px clamp(18px,6vw,96px) 84px;overflow:auto}
+section.on{display:flex;animation:in .45s ease both}
+@keyframes in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+section.hero{background:radial-gradient(ellipse at 85% 15%,rgba(59,130,246,.38),transparent 55%)}
+.c{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.g{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr))}
+.bar{background:var(--ac);color:var(--on);border-radius:14px;padding:16px 22px;font-size:clamp(18px,2.4vw,28px);transition:.4s}
+.btn,.tab,.chip{font:inherit;background:var(--cd);color:var(--tx);border:1px solid var(--bd);border-radius:999px;padding:8px 16px;cursor:pointer;transition:.2s}
+.btn:hover,.tab:hover,.chip:hover{border-color:var(--a2)}
+.btn.p,.tab.on,.chip.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button:focus-visible,input:focus-visible,.px:focus-visible,.card:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+.card{cursor:pointer;transition:.25s}.card:hover{border-color:var(--a2)}
+.rv{display:none;color:var(--ok)}.card.open .rv{display:block}.card.open{border-color:var(--ok)}
+.lab{display:flex;justify-content:space-between;gap:10px;font-size:15px;color:var(--mu)}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.px{width:42px;height:42px;border:1px solid var(--bd);border-radius:6px;display:grid;place-items:center;cursor:pointer;user-select:none;font:600 15px monospace}
+.pg{display:grid;gap:4px;width:max-content}
+.br{display:flex;align-items:center;gap:10px;font-size:15px}
+.br b{flex:0 0 74px;font-weight:500}.br i{display:block;height:20px;background:var(--ac);border-radius:6px;transition:width .35s;min-width:2px}.br span{min-width:50px}
+.out{font-size:clamp(34px,6vw,70px);font-weight:700;color:var(--ok);line-height:1}
+.ok{color:var(--ok)}.no{color:var(--wr)}
+svg text{fill:var(--mu);font-size:14px}
+.nav{position:fixed;left:0;right:0;bottom:0;padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;background:linear-gradient(transparent,var(--bg) 40%)}
+.nav .t{flex:1;height:5px;background:var(--bd);border-radius:5px;overflow:hidden}.nav .t div{height:100%;background:var(--ac);width:0;transition:width .4s}
+#th{position:fixed;right:14px;top:calc(10px + env(safe-area-inset-top,0px));z-index:5;padding:6px 12px}
+.merci{font-size:clamp(34px,8vw,96px);font-weight:700;line-height:1.05;background:linear-gradient(90deg,var(--a2),var(--ok));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<button class="btn" id="th" aria-label="Switch theme">◐</button>
+
+<section class="hero on">
+<small>Scientific talk</small>
+<h1>Mathematics: the foundation of artificial intelligence</h1>
+<p class="sub">How AI learns, understands and decides</p>
+<p class="f big">y = f(W·x + b)</p>
+<p class="mu">Use the arrow keys or the buttons below. Look for the controls on each slide: you can touch everything.</p>
+</section>
+
+<section><small>Introduction</small>
+<h2>AI is already everywhere in our daily lives</h2>
+<p class="mu">Tap each card to reveal the math behind it.</p>
+<div class="g" id="ev"></div>
+<div class="bar" id="thr" style="opacity:.35">Common thread: mathematics</div>
+</section>
+
+<section><small>Introduction</small>
+<h2>What is artificial intelligence?</h2>
+<p>Systems able to perform tasks that normally require human intelligence: learning, understanding, deciding.</p>
+<div class="bar">How does mathematics allow AI to learn, understand and make decisions?</div>
+<p class="mu">Tap a part to jump to it.</p>
+<div class="g">
+<button class="c card" onclick="go(3)"><h3>Part I</h3>The fundamental language</button>
+<button class="c card" onclick="go(7)"><h3>Part II</h3>How AI learns</button>
+<button class="c card" onclick="go(11)"><h3>Part III</h3>Limits and future</button></div>
+</section>
+
+<section><small>Part I · Linear algebra</small>
+<h2>Vectors, matrices, tensors: representing the world as numbers</h2>
+<div class="g">
+<div class="c"><h3>Vector</h3><p class="f big" id="vv"></p><p>A list of numbers: a word, a sound, a customer. Here, the first row of the matrix.</p></div>
+<div class="c"><h3>Matrix</h3><p class="mu">Tap a pixel to change its brightness (0 to 9).</p><div class="pg" id="g4"></div></div>
+<div class="c"><h3>Tensor</h3><div id="sw" style="height:70px;border-radius:12px;border:1px solid var(--bd)"></div>
+<div class="lab"><span>R</span><span id="rv">200</span></div><input type="range" id="r" max="255" value="200">
+<div class="lab"><span>G</span><span id="gv">90</span></div><input type="range" id="gg" max="255" value="90">
+<div class="lab"><span>B</span><span id="bv">40</span></div><input type="range" id="b" max="255" value="40">
+<p class="mu">One color pixel = 3 numbers. An image = stacked matrices.</p></div></div>
+<p class="mu">Application: a network transforms its data with matrix products, y = W·x.</p>
+</section>
+
+<section><small>Part I · Probability and statistics</small>
+<h2>Deciding despite uncertainty</h2>
+<div class="g g2">
+<div class="c"><h3>Bayes’ theorem</h3><p class="f">P(A|B) = P(B|A)·P(A) / P(B)</p>
+<p class="mu">A medical test says “positive”. How likely is it that you are really sick? Move the sliders.</p>
+<div class="lab"><span>Disease prevalence</span><span id="pv"></span></div><input type="range" id="p" min="1" max="50" value="2">
+<div class="lab"><span>Test sensitivity</span><span id="sv"></span></div><input type="range" id="s" min="50" max="99" value="95">
+<div class="lab"><span>False positive rate</span><span id="fv"></span></div><input type="range" id="f" min="1" max="30" value="10"></div>
+<div class="c"><h3>Chance of being sick after a positive test</h3><p class="out" id="post"></p><p id="nat"></p>
+<p class="mu">Spam filters and diagnosis update their beliefs the same way. Regression (y = ax + b) does the same for prices, weather and sales: it finds the best line to predict.</p></div></div>
+</section>
+
+<section><small>Part I · Calculus and optimization</small>
+<h2>Learning means minimizing the error</h2>
+<div class="g g2">
+<div class="c"><svg viewBox="0 0 600 260" id="svg" role="img" aria-label="Error curve with a ball rolling toward the minimum"><text x="8" y="16">Error L</text><text x="520" y="254">parameter w</text><path id="cv" fill="none" stroke="var(--ac)" stroke-width="4"/><circle id="ball" r="11" fill="var(--wr)"/></svg></div>
+<div class="c"><p class="f big">w ← w − η·∇L(w)</p>
+<p>L: the model’s error · ∇L: the slope gives the direction · η: the step size</p>
+<div class="lab"><span>Step size η</span><span id="ev2"></span></div><input type="range" id="eta" min="5" max="115" value="30">
+<div class="row"><button class="btn p" id="st">Step</button><button class="btn" id="run">Run</button><button class="btn" id="rs">Reset</button></div>
+<p id="gi" class="mu"></p><p class="mu">Try η above 1: the ball overshoots and learning diverges.</p></div></div>
+</section>
+
+<section><small>Part I · Mathematical logic</small>
+<h2>Reasoning and representing knowledge</h2>
+<p class="f big">A ∧ B ⇒ C</p>
+<p class="mu">Tick the symptoms and see which rules fire.</p>
+<div class="row" id="sym"></div>
+<div class="g g2"><div class="c"><h3>Rules</h3><div id="rules"></div></div>
+<div class="c"><h3>Conclusion</h3><p class="big" id="concl"></p><p class="mu">Expert systems and knowledge graphs (entities linked by logical relations) power diagnosis, search engines and assistants.</p></div></div>
+</section>
+
+<section><small>Part II · Learning</small>
+<h2>Machine learning: three ways to learn</h2>
+<div class="row" id="tabs"></div>
+<div class="c" id="tabc" style="min-height:190px"></div>
+</section>
+
+<section><small>Part II · Neural networks</small>
+<h2>The artificial neuron</h2>
+<p class="f big">y = f(w₁x₁ + w₂x₂ + w₃x₃ + b)</p>
+<div class="g g2">
+<div class="c"><p class="mu">Inputs are fixed: x₁ = 1, x₂ = 0.5, x₃ = −1. Change the weights (importance) and the bias.</p>
+<div class="lab"><span>w₁</span><span id="w1v"></span></div><input type="range" id="w1" min="-20" max="20" value="9">
+<div class="lab"><span>w₂</span><span id="w2v"></span></div><input type="range" id="w2" min="-20" max="20" value="-4">
+<div class="lab"><span>w₃</span><span id="w3v"></span></div><input type="range" id="w3" min="-20" max="20" value="6">
+<div class="lab"><span>bias b</span><span id="bbv"></span></div><input type="range" id="bb" min="-20" max="20" value="1">
+<div class="row"><span>Activation f:</span><button class="chip on" data-a="sig">sigmoid</button><button class="chip" data-a="relu">ReLU</button></div></div>
+<div class="c"><h3>Output y</h3><p class="out" id="ny"></p><p class="f" id="nz"></p>
+<p>Backpropagation: the error flows back to correct the weights, step after step.</p></div></div>
+</section>
+
+<section><small>Part II · Applications</small>
+<h2>Image recognition: everything is a matrix</h2>
+<p class="mu">Draw a digit (1, 4 or 7) by tapping pixels. Pixels are numbers; the network gives probabilities.</p>
+<div class="row" style="gap:36px;align-items:flex-start">
+<div><div class="pg" id="g5"></div><div class="row" style="margin-top:12px"><button class="btn" data-d="7">Load 7</button><button class="btn" data-d="1">Load 1</button><button class="btn" data-d="4">Load 4</button><button class="btn" data-d="0">Clear</button></div></div>
+<div class="c" style="flex:1;min-width:240px"><h3>Neural network says</h3><div id="pr" style="display:grid;gap:10px"></div></div></div>
+<p class="mu">Facial recognition: same principles, with millions of pixels and dozens of layers. (Simplified demo.)</p>
+</section>
+
+<section><small>Part II · Applications</small>
+<h2>Translation and large language models</h2>
+<div class="g g2">
+<div class="c"><h3>Translation</h3><p>Words become vectors; similar meanings sit close together.</p>
+<p class="f" id="kq">king − man + woman ≈ ?</p><p class="mu" id="ks">Toy vectors (royalty, femininity): king (0.9, 0.1) · man (0.1, 0.1) · woman (0.1, 0.9) · queen (0.9, 0.9)</p>
+<div><button class="btn p" id="kb">Compute</button></div></div>
+<div class="c"><h3>ChatGPT</h3><p>A model predicts the next word using probabilities and attention (Transformers).</p>
+<p class="big">The sky is <b class="ok" id="blank">____</b></p><div id="wp" style="display:grid;gap:8px"></div>
+<div class="lab"><span>Temperature (creativity)</span><span id="tv"></span></div><input type="range" id="tmp" min="2" max="30" value="10">
+<div><button class="btn p" id="gen">Pick next word</button></div></div></div>
+</section>
+
+<section><small>Part III · Limits</small>
+<h2>Mathematics alone is not enough</h2>
+<p class="mu">Tap each ingredient to power up the AI.</p>
+<div class="g" id="lim"></div>
+<div class="c"><div class="lab"><span>Power of the AI</span><span id="pw">0%</span></div>
+<div style="height:16px;background:var(--bd);border-radius:9px;overflow:hidden"><div id="pb" style="height:100%;width:0;background:var(--ok);transition:.5s"></div></div></div>
+<div class="bar">A powerful AI = mathematics + data + computing</div>
+</section>
+
+<section><small>Part III · Challenges and future</small>
+<h2>Current challenges and perspectives</h2>
+<div class="g g2">
+<div class="c"><h3>Challenges</h3><p><b>Algorithmic bias:</b> unbalanced data</p><p><b>Black box:</b> decisions hard to explain</p><p><b>Ethics:</b> privacy, responsibility</p></div>
+<div class="c"><h3>Future</h3><p><b>Efficient AI:</b> leaner models</p><p><b>Cryptography:</b> protecting data</p><p><b>Mathematical research:</b> learning theory, explainability</p></div></div>
+</section>
+
+<section class="hero"><small>Conclusion</small>
+<h2>Mathematics gives AI the tools to learn and decide</h2>
+<p class="mu">Tap a tool to see its formula.</p>
+<div class="g" id="cc"></div>
+<div class="bar">Which studies and careers will build tomorrow’s AI?</div>
+</section>
+
+<section class="hero" style="align-items:flex-start">
+<p class="merci">Merci de votre attention</p>
+<p class="sub mu">Des questions ?</p>
+<p class="f big">y = f(W·x + b)</p>
+<div><button class="btn p" onclick="go(0)">Restart the talk</button></div>
+</section>
+
+<div class="nav"><button class="btn" id="pv0" aria-label="Previous slide">←</button><div class="t"><div id="pgb"></div></div><span class="mu" id="cnt"></span><button class="btn p" id="nx" aria-label="Next slide">→</button></div>
+
+<script>
+const $=q=>document.querySelector(q),$$=q=>[...document.querySelectorAll(q)],S=$$('section');let cur=0;
+function go(n){cur=Math.max(0,Math.min(S.length-1,n));S.forEach((s,k)=>s.classList.toggle('on',k==cur));$('#pgb').style.width=(cur/(S.length-1)*100)+'%';$('#cnt').textContent=(cur+1)+' / '+S.length}
+$('#nx').onclick=()=>go(cur+1);$('#pv0').onclick=()=>go(cur-1);
+addEventListener('keydown',e=>{if(e.target.tagName=='INPUT')return;if(['ArrowRight','PageDown'].includes(e.key)||(e.key==' '&&e.target.tagName!='BUTTON'))go(cur+1);if(['ArrowLeft','PageUp'].includes(e.key))go(cur-1)});
+let tx=0;addEventListener('touchstart',e=>tx=e.touches[0].clientX);addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>80&&!e.target.closest('input'))go(cur+(d<0?1:-1))});
+$('#th').onclick=()=>{const r=document.documentElement,l=matchMedia('(prefers-color-scheme:light)').matches;const now=r.dataset.theme||(l?'light':'dark');r.dataset.theme=now=='dark'?'light':'dark'};
+const on=(id,f)=>{$('#'+id).addEventListener('input',f)};
+function cards(el,data,fn){$(el).innerHTML=data.map((d,k)=>`<div class="c card" tabindex="0" role="button" data-k="${k}">${fn(d)}</div>`).join('');$$(el+' .card').forEach(c=>{const t=()=>{c.classList.toggle('open');c.dispatchEvent(new CustomEvent('t',{bubbles:true}))};c.onclick=t;c.onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();t()}}})}
+function grid(el,n,v,cb,tog){const e=$(el);e.style.gridTemplateColumns=`repeat(${n},42px)`;const ds=v.map((_,k)=>{const d=document.createElement('div');d.className='px';d.tabIndex=0;d.onclick=()=>{v[k]=tog?(v[k]?0:9):(v[k]+1)%10;draw();cb()};d.onkeydown=ev=>{if(ev.key=='Enter'||ev.key==' '){ev.preventDefault();d.click()}};e.append(d);return d});const draw=()=>ds.forEach((d,k)=>{d.textContent=v[k];d.style.background=`rgba(59,130,246,${.08+v[k]/9*.92})`;d.style.color=v[k]>5?'#06122a':'var(--tx)'});draw();return draw}
+
+// 2 everywhere
+cards('#ev',[['ChatGPT','Write, explain, code','Probabilities + vectors'],['Voice assistants','Understand speech','Signals + statistics'],['Translation','Translate in real time','Linear algebra'],['Faces','Unlock a phone','Matrices + optimization'],['Self-driving cars','See and decide on the road','Probability + calculus']],d=>`<h3>${d[0]}</h3><p>${d[1]}</p><p class="rv">${d[2]}</p>`);
+$('#ev').addEventListener('t',()=>{$('#thr').style.opacity=$$('#ev .open').length==5?1:.35});
+
+// 4 vectors
+const m4=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6];
+const d4=grid('#g4',4,m4,()=>vec());function vec(){$('#vv').textContent='['+m4.slice(0,4).join(' ; ')+']'}vec();
+function sw(){const c=[$('#r').value,$('#gg').value,$('#b').value];$('#sw').style.background=`rgb(${c})`;$('#rv').textContent=c[0];$('#gv').textContent=c[1];$('#bv').textContent=c[2]}
+['r','gg','b'].forEach(i=>on(i,sw));sw();
+
+// 5 bayes
+function bay(){const p=$('#p').value/100,s=$('#s').value/100,f=$('#f').value/100;$('#pv').textContent=(p*100)+'%';$('#sv').textContent=(s*100)+'%';$('#fv').textContent=(f*100)+'%';
+const tp=s*p,fp=f*(1-p),r=tp/(tp+fp);$('#post').textContent=(r*100).toFixed(1)+'%';
+$('#nat').innerHTML=`Out of 1,000 people: <b class="ok">${(tp*1000).toFixed(0)}</b> sick people test positive, but <b class="no">${(fp*1000).toFixed(0)}</b> healthy people do too.`}
+['p','s','f'].forEach(i=>on(i,bay));bay();
+
+// 6 gradient descent
+const G={w:-1.5,n:0,t:null},X=w=>(Math.min(8,Math.max(-2,w))+2)/10*600,Y=w=>{const l=Math.min(25,(w-3)**2);return 240-l/25*215};
+$('#cv').setAttribute('d','M'+Array.from({length:41},(_,k)=>{const w=-2+k*.25;return X(w)+','+Y(w)}).join(' L'));
+function gd(){const b=$('#ball');b.setAttribute('cx',X(G.w));b.setAttribute('cy',Y(G.w));$('#ev2').textContent=($('#eta').value/100).toFixed(2);$('#gi').textContent=`w = ${G.w.toFixed(2)} · error L = ${((G.w-3)**2).toFixed(2)} · steps: ${G.n}`}
+function step(){G.w-=$('#eta').value/100*2*(G.w-3);G.n++;gd()}
+$('#st').onclick=step;$('#rs').onclick=()=>{clearInterval(G.t);G.w=-1.5;G.n=0;gd()};
+$('#run').onclick=()=>{clearInterval(G.t);let k=0;G.t=setInterval(()=>{step();if(++k>=15)clearInterval(G.t)},350)};on('eta',gd);gd();
+
+// 7 logic
+const sy=['Fever','Cough','Sore throat'],R=[['IF fever AND cough THEN suspect the flu',a=>a[0]&&a[1],'Suspect the flu'],['IF sore throat AND fever THEN suspect angina',a=>a[2]&&a[0],'Suspect angina'],['IF no fever AND no cough THEN no infection',a=>!a[0]&&!a[1],'No infection suspected']],sa=[0,0,0];
+$('#sym').innerHTML=sy.map((s,k)=>`<button class="chip" data-k="${k}">${s}</button>`).join('');
+function lg(){$('#rules').innerHTML=R.map(r=>`<p class="${r[1](sa)?'ok':'mu'}">${r[1](sa)?'✓':'○'} ${r[0]}</p>`).join('');const c=R.filter(r=>r[1](sa)).map(r=>r[2]);$('#concl').textContent=c.length?c.join(' · '):'No rule fires: not enough information'}
+$$('#sym .chip').forEach(b=>b.onclick=()=>{sa[b.dataset.k]^=1;b.classList.toggle('on');lg()});lg();
+
+// 8 ML tabs
+const ML=[['Supervised','Examples come with the right answer: the model minimizes its error on them.','Spam detection','Like studying with an answer key.'],['Unsupervised','No answers given: the model groups data by distance.','Customer segmentation','Like sorting a pile of photos into piles by similarity.'],['Reinforcement','Trial, error and rewards: the model maximizes its gain.','AlphaGo, robots','Like training a dog with treats.']];
+$('#tabs').innerHTML=ML.map((m,k)=>`<button class="tab" data-k="${k}">${m[0]}</button>`).join('');
+function tab(k){$$('#tabs .tab').forEach((b,i)=>b.classList.toggle('on',i==k));const m=ML[k];$('#tabc').innerHTML=`<h2>${m[0]}</h2><p class="sub">${m[1]}</p><p class="ok">Example: ${m[2]}</p><p class="mu">${m[3]}</p>`}
+$$('#tabs .tab').forEach(b=>b.onclick=()=>tab(+b.dataset.k));tab(0);
+
+// 9 neuron
+let act='sig';
+function nr(){const w=['w1','w2','w3','bb'].map(i=>$('#'+i).value/10);['w1','w2','w3','bb'].forEach((i,k)=>$('#'+i+'v').textContent=w[k].toFixed(1));
+const z=w[0]*1+w[1]*.5+w[2]*-1+w[3],y=act=='sig'?1/(1+Math.exp(-z)):Math.max(0,z);$('#nz').textContent=`z = ${z.toFixed(2)}`;$('#ny').textContent=y.toFixed(2)}
+['w1','w2','w3','bb'].forEach(i=>on(i,nr));$$('[data-a]').forEach(b=>b.onclick=()=>{act=b.dataset.a;$$('[data-a]').forEach(x=>x.classList.toggle('on',x==b));nr()});nr();
+
+// 10 image
+const D={7:'9999900090009000900090000'.replace(/^.{25}$/,m=>m)};
+const T={7:'99999'+'00090'+'00900'+'09000'+'09000',1:'00900'+'09900'+'00900'+'00900'+'09990',4:'90090'+'90090'+'99999'+'00090'+'00090'};
+const im=[...T[7]].map(Number);
+function rec(){const n=Math.hypot(...im),cs=Object.keys(T).map(k=>{const t=[...T[k]].map(Number);return n?im.reduce((a,v,i)=>a+v*t[i],0)/(n*Math.hypot(...t)):0}),e=cs.map(c=>Math.exp(c*7)),s=e.reduce((a,b)=>a+b);
+$('#pr').innerHTML=Object.keys(T).map((k,i)=>`<div class="br"><b>Digit ${k}</b><i style="width:${e[i]/s*60}%"></i><span>${(e[i]/s*100).toFixed(0)} %</span></div>`).join('')}
+const d5=grid('#g5',5,im,rec,true);rec();
+$$('[data-d]').forEach(b=>b.onclick=()=>{const t=b.dataset.d=='0'?'0'.repeat(25):T[b.dataset.d];[...t].forEach((c,i)=>im[i]=+c);d5();rec()});
+
+// 11 LLM
+const V={king:[.9,.1],man:[.1,.1],woman:[.1,.9],queen:[.9,.9]};
+$('#kb').onclick=()=>{const r=V.king.map((x,i)=>+(x-V.man[i]+V.woman[i]).toFixed(2)),n=Object.keys(V).filter(k=>!['king','man','woman'].includes(k)).sort((a,b)=>Math.hypot(V[a][0]-r[0],V[a][1]-r[1])-Math.hypot(V[b][0]-r[0],V[b][1]-r[1]))[0];
+$('#kq').textContent=`king − man + woman = (${r}) ≈ ${n}`};
+const W=[['blue',4],['cloudy',2.2],['clear',1.6],['falling',0],['green',-2.5]];let pr=[];
+function lm(){const T=$('#tmp').value/10;$('#tv').textContent=T.toFixed(1);const e=W.map(w=>Math.exp(w[1]/T)),s=e.reduce((a,b)=>a+b);pr=e.map(x=>x/s);
+$('#wp').innerHTML=W.map((w,i)=>`<div class="br"><b>${w[0]}</b><i style="width:${pr[i]*60}%"></i><span>${(pr[i]*100).toFixed(1)}%</span></div>`).join('')}
+on('tmp',lm);lm();
+$('#gen').onclick=()=>{let r=Math.random(),i=0;while(i<pr.length-1&&(r-=pr[i])>0)i++;$('#blank').textContent=W[i][0]};
+
+// 12 limits
+const L=[['Data','Millions of clean, varied examples',34],['Computing power','GPUs and parallel computing for billions of parameters',33],['Computer science','Algorithms, programming, software architecture',33]];
+cards('#lim',L,d=>`<h3>${d[0]}</h3><p>${d[1]}</p><p class="rv">+${d[2]}%</p>`);
+$('#lim').addEventListener('t',()=>{const p=$$('#lim .open').reduce((a,c)=>a+L[c.dataset.k][2],0);$('#pw').textContent=p+'%';$('#pb').style.width=p+'%'});
+
+// 14 conclusion
+cards('#cc',[['Algebra','representing data','y = W·x'],['Probability','handling uncertainty','P(A|B) = P(B|A)·P(A) / P(B)'],['Optimization','learning by minimizing error','w ← w − η·∇L(w)'],['Logic','reasoning','A ∧ B ⇒ C']],d=>`<h3>${d[0]}</h3><p>${d[1]}</p><p class="rv f">${d[2]}</p>`);
+go(0);
+</script></body></html>
